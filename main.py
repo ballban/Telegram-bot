@@ -1,13 +1,16 @@
 import logging
 from telegram.ext import Updater, CallbackContext, CommandHandler
 from telegram import Update
+import yaml
 
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO
 )
-TOKEN = '5528204108:AAEstPt4Ms9K9zYoLVF3y7UwG3JiljmG9zA'
+with open('config.yml') as f:
+    config = yaml.load(f, Loader=yaml.FullLoader)
+TOKEN = config['TOKEN']
 
 
 def start(update: Update, context: CallbackContext):
